@@ -1,7 +1,15 @@
 # Jkafkacat
 
-Simple java based library to consume/produce messages from a Kafka broker. This tool was strongly based on the original kafkacat implementation.
-The motivation to recreate the (already existing) tool is because the kafkacat needs to have some OS dependencies installed (librdkafka) that in some cases may not be available (my case) and will not be able to have the new features (avro serialization/deserialization) for example.
+Simple java based library to consume/produce messages from an Apache Kafka broker. This tool was strongly based on the original kafkacat implementation.
+The motivation to recreate the (already existing) tool is because kafkacat needs to have some OS dependencies installed (librdkafka) that in some cases may not be available (my case) and/or for some old OS available packages will not be able to have the new features (avro serialization/deserialization) for example.
+
+## Installation
+
+Jkafkacat requires basically Maven 3+ and JDK 1.8 to compile:
+```bash
+mvn clean package
+```
+This will generate the target\jkafkacat-dist.jar, with that you're good to go.
 
 ## Examples
 
@@ -120,7 +128,7 @@ key.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 schema.registry.url=https://localhost:8081
 ```
 
-### Given the need to reset the offset of a source kafka-connect connector, extracting the information from the connect-offsets topic to see the partition and key#value
+### Given the need to reset the offset of a source kafka-connect connector, extracting the information from the connect-offsets topic to see the partition and key#value (see https://rmoff.net/2019/08/15/reset-kafka-connect-source-connector-offsets/)
 
 Command:
 
@@ -137,7 +145,7 @@ value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
 key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
 ```
 
-### Given the need to reset the offset of a source kafka-connect connector, in an unsecured broker, produce a tombstone message to a specific partition of the topic connect-offsets
+### Given the need to reset the offset of a source kafka-connect connector, in an unsecured broker, produce a tombstone message to a specific partition of the topic connect-offsets (see https://rmoff.net/2019/08/15/reset-kafka-connect-source-connector-offsets/)
 
 Command:
 
