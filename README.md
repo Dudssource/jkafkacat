@@ -81,23 +81,6 @@ value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
 key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
 ```
 
-### Given an ordinary topic in an unsecured broker, consume 100 messages produced after 'Thursday, 29 August 2019 13:00:00 GMT', formatting the output to show the message timestamp and the key#value and then exit
-
-Command:
-
-```bash
-java -jar jkafkacat-dist.jar -m consumer -o timestamp -ot 1567083600000 -t mytopic -c config.properties -nm 100 -f "%T %k#%v"
-```
-
-config.properties
-
-```properties
-bootstrap.servers=localhost:9092
-group.id=jkafkacat
-value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
-key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
-```
-
 ### Given an ordinary topic in a secured broker with SASL_SSL, consume 10 AVRO messages, getting dynamically the schema from a secured schema registry with SSL/Certificate authentication - specified through the ks and ksp params, formatting the output to show the message timestamp and the key#value and then exit
 
 Command:
@@ -128,7 +111,7 @@ key.deserializer=org.apache.kafka.common.serialization.LongDeserializer
 schema.registry.url=https://localhost:8081
 ```
 
-### Given the need to reset the offset of a source kafka-connect connector, extracting the information from the connect-offsets topic to see the partition and key#value (see https://rmoff.net/2019/08/15/reset-kafka-connect-source-connector-offsets/)
+### Given the need to reset the offset of a source kafka-connect connector, extract the information from the connect-offsets topic to see the partition and key#value (see https://rmoff.net/2019/08/15/reset-kafka-connect-source-connector-offsets/)
 
 Command:
 
